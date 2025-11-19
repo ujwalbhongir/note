@@ -1,0 +1,12 @@
+docker login
+pull image
+minikube start --driver=docker
+minikube start
+minikube status
+kubectl get pods
+kubectl create deployment imgnaem --imaeg=<hub image>
+kubectl get pods and deployments
+kubectl scale deployment imagenuma --replicas=4
+kubectl expose deployment imagename --type=NodePort --port=8080
+kubectl  get svc
+kubectl port-forward svc/imagename 7777:8080
