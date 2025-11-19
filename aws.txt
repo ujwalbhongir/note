@@ -1,0 +1,27 @@
+sudo su
+
+sudo apt-get update
+
+sudo apt-get install docker.io
+
+sudo docker --version
+
+sudo docker images
+
+sudp docker ps
+
+git clone http of maven-web application
+
+navigate to maven-web application
+
+cd maven-web folder name
+
+> write Dockerfile
+
+> sudo docker build -t <imgname>
+
+sudo docker run -d -p 8080:8080 <imagename> access the application with public ip of ec2 instance
+
+not getting page
+
+configure the security groups
