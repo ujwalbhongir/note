@@ -1,0 +1,7 @@
+docker login
+docker pull jasonrivers/nagios : latest
+docker run —name nagiosdemo —p 7777 jasonrivers/nagios
+
+docker PS
+docekr rmi nagiosdemo
+
