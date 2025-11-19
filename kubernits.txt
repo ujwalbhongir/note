@@ -3,6 +3,7 @@ pull image
 minikube start --driver=docker
 minikube start
 minikube status
+docker pull gayathri@62/denoIab
 kubectl get pods
 kubectl create deployment imgnaem --imaeg=<hub image>
 kubectl get pods and deployments
