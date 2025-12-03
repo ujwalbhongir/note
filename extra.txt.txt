@@ -1,0 +1,158 @@
+🔵 WEEK 2 – GIT BASICS
+git init                            # start repo
+git config --global user.name ""    # set name
+git config --global user.email ""   # set email
+git status                          # show changes
+git add .                           # stage all
+git commit -m "msg"                 # commit
+git push origin main                # push
+git pull origin main                # pull
+git diff                            # unstaged changes
+git log --oneline                   # history
+git restore file                    # undo file edits
+git restore --staged file           # unstage file
+git reset --hard                    # reset everything
+
+🔵 WEEK 3 – ADVANCED GIT
+git branch feature/ui               # create branch
+git checkout feature/ui             # switch branch
+git merge feature/ui                # merge into main
+git branch -d feature/ui            # delete branch
+git remote -v                       # show remotes
+git remote add origin <url>         # add remote
+git stash                           # save work
+git stash pop                       # restore
+git diff > fix.patch                # create patch
+git apply fix.patch                 # apply patch
+git commit --amend -m "correct"     # fix commit msg
+git blame -L 10,10 file.js          # who changed line
+git reflog                          # recover deleted branch
+git fetch                           # fetch without merge
+
+🟠 WEEK 4 – MAVEN
+mvn clean                           # remove old builds
+mvn install                         # compile + test + package
+mvn test                            # run tests
+mvn package                         # produce war/jar
+mvn -version                        # check maven
+
+🟣 WEEK 5 – DOCKER CLI
+docker pull ubuntu                  # download image
+docker images                       # show images
+docker rmi ubuntu                   # delete image
+
+docker run -it ubuntu               # run interactive
+docker run -d -p 3000:80 --name web ubuntu   # detached + port map
+docker ps                           # running containers
+docker ps -a                        # all containers
+docker stop web                     # stop
+docker start web                    # start
+docker rm web                       # remove container
+
+docker exec -it web bash            # enter container
+docker logs web                     # show logs
+
+docker build -t myapp .             # build Dockerfile
+docker tag myapp myapp:v1           # tag image
+
+docker save myapp > app.tar         # export
+docker load < app.tar               # import
+
+docker stats                         # resource usage
+
+🟣 WEEK 6 – DOCKER COMPOSE
+docker compose up -d                # start all services
+docker compose up --build           # rebuild + start
+docker compose down                 # stop all
+docker compose ps                   # list services
+docker compose up --scale web=3 -d  # scale service
+
+
+Fix port conflict:
+
+- "8081:80"
+- "8082:80"
+
+🔵 WEEK 7 – MULTI-MODULE MAVEN
+mvn -pl moduleA clean install       # build single module
+mvn clean install                   # build all modules
+
+🟢 WEEK 8 – JENKINS AUTOMATION (3-JOB PIPELINE)
+Build job
+Invoke Maven: clean
+Invoke Maven: install
+
+Test job
+mvn test
+
+Deploy job
+Deploy WAR/EAR to Container → Tomcat
+
+🟢 WEEK 9 – PIPELINE SCRIPT
+pipeline {
+    agent any
+    tools { maven 'MAVEN-HOME' }
+
+    stages {
+        stage('clean') { steps { bat 'mvn clean' } }
+        stage('install') { steps { bat 'mvn install' } }
+        stage('test') { steps { bat 'mvn test' } }
+        stage('package') { steps { bat 'mvn package' } }
+    }
+}
+
+🔵 Add 3-minute auto-run trigger
+triggers {
+    cron('*/3 * * * *')
+}
+
+🔥 WEEK 10 – MINIKUBE + KUBERNETES
+minikube start                      # start cluster
+minikube status                     # status
+kubectl create deployment nginx --image=nginx
+kubectl get pods                    # list pods
+kubectl get deployments             # list deployments
+kubectl describe pods               # details
+kubectl scale deployment nginx --replicas=4
+kubectl expose deployment nginx --type=NodePort --port=80
+kubectl get svc                     # get service
+minikube service nginx              # open service
+kubectl delete deployment nginx
+
+🔥 WEEK 10 – NAGIOS
+docker pull jasonrivers/nagios:latest
+docker run -d -p 7070:80 --name nagios jasonrivers/nagios:latest
+docker stop nagios
+docker rm nagios
+docker rmi jasonrivers/nagios
+
+🟩 WEEK 11 – JENKINS WEBHOOK + EMAIL
+ngrok
+ngrok config add-authtoken XXX
+ngrok http 8080
+
+Webhook (GitHub)
+https://<ngrok-url>/github-webhook/
+
+Email settings
+SMTP: smtp.gmail.com
+Port: 465
+SSL: ON
+Auth: ON
+App Password: xxxx xxxx xxxx xxxx
+
+🟧 WEEK 12 – AWS EC2
+Launch instance → Ubuntu → Create keypair
+chmod 400 key.pem
+ssh -i key.pem ubuntu@public-ip
+
+sudo apt-get update
+sudo apt-get install docker.io -y
+docker --version
+git --version
+
+git clone <repo>
+docker build -t app .
+docker run -d -p 80:80 app
+
+Copy public IP → open site in browser
